@@ -4,11 +4,12 @@
 // @version      0.1
 // @description  bilibili隐藏head
 // @author       soporior
-// @match        *://www.bilibili.com/video* //匹配网站
+// @match        *://www.bilibili.com/video*
 // @icon         http://www.w3.org/2000/svg
 // @grant        none
 // ==/UserScript==
 
+// @match     *://www.bilibili.com/video* //匹配网站
 (function() {
     'use strict';
    //获取屏幕缩放比例
@@ -43,6 +44,7 @@
     };
     window.onresize=()=>{
         const headDom = document.getElementById("biliMainHeader");
+        //关闭nav
         if(!headDom){
         return
         }
@@ -54,7 +56,13 @@
             headDom.style.display = "block";
 
         }
-
+        //关闭广告
+        const vcd = document.getElementsByClassName("vcd")
+        if (typeof vcd != "undefined") {
+            vcd.forEach(dom => {
+                dom.style.display = "none"
+            });
+        }
     }
 
 
