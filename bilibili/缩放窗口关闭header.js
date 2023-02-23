@@ -2,7 +2,7 @@
 // @name         bilibili隐藏head
 // @namespace    http://tampermonkey.net/
 // @version      0.1
-// @description  bilibili隐藏head
+// @description  bilibili在播放视频界面隐藏head和广告(resize触发)
 // @author       soporior
 // @match        *://www.bilibili.com/video*
 // @icon         http://www.w3.org/2000/svg
