@@ -2,7 +2,7 @@
  $ @Author: lxf
  $ @Date: 2023-05-08 16:28:50
  $ @LastEditors: lxf
- $ @LastEditTime: 2023-05-08 17:25:01
+ $ @LastEditTime: 2023-05-09 13:30:29
  $ @FilePath: \myTamperMonkey\The Economist\消除订阅弹框.js
  $*/
 function doIt() {
@@ -23,7 +23,8 @@ const handle = setInterval(() => {
     }
     if (paywall) {
         doIt()
-        document.getElementsByTagName("article").innerHTML = text[0]
+        document.getElementsByTagName("article")[0].innerHTML = text[0]
+        document.getElementById("piano-ribbon").style.display = "none"
         clearInterval(handle)
     }
 }, 500)
