@@ -1,10 +1,16 @@
-/*$$
- $ @Author: lxf
- $ @Date: 2023-05-08 16:28:50
- $ @LastEditors: lxf
- $ @LastEditTime: 2023-05-09 13:30:29
- $ @FilePath: \myTamperMonkey\The Economist\消除订阅弹框.js
- $*/
+// ==UserScript==
+// @name         hideEconomistOder
+// @namespace    https://www.economist.com/
+// @version      0.1
+// @description  hideEconomistOder
+// @author       soporior
+// @match       *://www.economist.com/*
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=economist.com
+// @grant        none
+// ==/UserScript==
+
+(function() {
+    'use strict';
 function doIt() {
     const paywall = document.getElementsByClassName("paywall")[0]
     const fatherEl = paywall.parentElement
@@ -18,14 +24,25 @@ const handle = setInterval(() => {
 
     const paywall = document.getElementsByClassName("paywall")[0]
 
-    if (document.getElementsByTagName("article")[0].innerHTML) {
+    if (document.getElementsByTagName("article")[0] || document.getElementsByTagName("article")[0].innerHTML) {
         text.push(document.getElementsByTagName("article")[0].innerHTML)
     }
-    if (paywall) {
-        doIt()
+    if (paywall || text.length>20 ) {
+
+       paywall && doIt()
         document.getElementsByTagName("article")[0].innerHTML = text[0]
-        document.getElementById("piano-ribbon").style.display = "none"
+        document.getElementById("piano-ribbon").style.display= "none"
+
         clearInterval(handle)
     }
 }, 500)
 
+
+
+
+
+
+
+
+    
+})();
